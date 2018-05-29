@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load news_tags %}
+{% block main %}
+
+    <section id="content">
+  	<div class="top">
+    	<div class="container">
+            <div class="clearfix">
+                <section id="gallery">
+                    {% get_now_day_hot as post_list %}
+                    <div class="pics">
+                        {% for post in post_list %}
+                        {% if forloop.counter <= 5 %}
+                            <img src="{{ post.img }}" alt="" width="495" height="329">
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <a href="#" id="prev"></a>
+                    <a href="#" id="next"></a>
+                </section>
+                <section id="intro">
+          	        <div class="inner">
+          	            <h2>看世界</h2>
+          	            <h2><span>本月热点</span></h2>
+
+                        {% for post in post_list %}
+
+                            {% if forloop.first %}
+                                <h3>{{ post.title }}</h3>
+                                <p>{{ post.excerpt }}</p>
+                            <a href="{{ post.get_absolute_url }}" class="extra-button">阅读详情</a>
+                            {% endif %}
+                        {% empty %}
+                            本月暂未发布新闻
+                        {% endfor %}
+
+
+          	        </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="middle">
+
+    	<div class="container">
+      	    <div class="wrapper">
+                <div class="grid3 first">
+
+                <ul class="categories">
+                    {% get_categories as category_list %}
+                    <li><a href="#">导航</a></li>
+
+                        {% for category in category_list %}
+                            <li><a href="{% url 'news:category' category.pk %}">{{ category.name }}</a></li>
+                        {% empty %}
+                            sorry,暂无分类
+                        {% endfor %}
+
+                </ul>
+                </div>
+                <div class="grid9">
+                    {% get_recent_posts as post_list %}
+                    {% for post in post_list %}
+                        {% if forloop.first %}
+
+                         <h2>{{ post.title }} </h2>
+                            &nbsp;&nbsp;阅读量：{{ post.views }}
+                        <p>{{ post.excerpt }}</p>
+                        <p><a href="{{ post.get_absolute_url }}" class="more">阅读详情</a></p>
+
+                        {% endif %}
+                        <section class="images">
+                            {% if forloop.counter <= 2 %}
+                                <figure><a href="#"><img src="{{ post.img }}" alt="" width="300px" height="180px"></a></figure>
+                            {% endif %}
+
+
+                        </section>
+                    {% empty %}
+                        sorry,该类下没有文章
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+
+
+{% endblock main %}

@@ -1,0 +1,125 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'news/css/reset.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'news/css/grid.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'news/css/style.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'news/css/jquery-ui-1.8.5.custom.css' %}" type="text/css" media="all">
+    <script type="text/javascript" src="{% static 'news/js/jquery-1.4.2.min.js' %}" ></script>
+	<script type="text/javascript" src="{% static 'news/js/jquery.cycle.all.js' %}"></script>
+    <script type="text/javascript" src="{% static 'news/js/jquery-ui-1.8.5.custom.min.js' %}"></script>
+
+  <!--[if lt IE 9]>
+    <script type="text/javascript" src="{% static 'news/js/html5.js' %}"></script>
+  <![endif]-->
+    <style>
+        span.highlighted {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+  <header>
+    <nav>
+    	<div class="container">
+        <div class="wrapper">
+          <h1><a><strong>新闻</strong>系统</a></h1>
+          <ul>
+          	<li><a href="{% url 'news:index' %}" class="current">首页</a></li>
+
+            <li><a href="{% url 'news:hot_topic' %}">热点新闻</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="adv-content">
+    	<div class="container">
+            <form action="{% url 'haystack_search' %}" id="search-form" role="search" method="get">
+                <fieldset>
+
+                    <input type="text" name="q"   placeholder="搜索" required>
+                    <input type="submit" value="">
+
+                </fieldset>
+            </form>
+        </div>
+    </section>
+  </header>
+
+      {% block main %}
+        {% endblock main %}
+
+<section id="content">
+<div class="bottom">
+    	<div class="container">
+      	<div class="wrapper">
+        	<div class="grid3 first">
+            <h3>友情链接</h3>
+            <ul class="list1">
+                <li><a href="http://www.cctv.com/">央视网</a></li>
+                <li><a href="http://www.china.com.cn/">中国网</a></li>
+                <li><a href="http://news.sina.com.cn/">新浪新闻</a></li>
+                <li><a href="http://news.qq.com/">腾讯新闻</a></li>
+                <li><a href="https://news.hao123.com/">hao123</a></li>
+                <li><a href="http://news.baidu.com/">百度新闻</a></li>
+                <li><a href="https://www.thepaper.cn/">澎湃新闻</a></li>
+            </ul>
+          </div>
+
+          <div class="grid3">
+            <h3>备案信息</h3>
+            <ul class="list2">
+              <li><a href="http://www.miitbeian.gov.cn">陕ICP备17022211号-2</a></li>
+
+            </ul>
+          </div>
+          <div class="grid3">
+          	<div id="datepicker"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</section>
+
+  <footer>
+    <div class="container">
+    	<div class="wrapper">
+      	<div class="copy">作者相关
+            <a href="http://www.sustliyang.top">博客一</a>
+            <a href="https://blog.csdn.net/NeverWA">博客二</a>
+            <a href="https://github.com/NiceAir">GitHub</a>
+        </div>
+        <address class="phone">
+        	版权所有：孙悦 尹云红 李阳 <strong>&nbsp;计151</strong>
+        </address>
+      </div>
+    </div>
+  </footer>
+  <script type="text/javascript">
+		$(document).ready(function() {
+			$('.pics').cycle({
+				fx: 'toss',
+				next:   '#next',
+				prev:   '#prev'
+			});
+
+			// Datepicker
+			$('#datepicker').datepicker({
+				inline: true
+			});
+
+		});
+	</script>
+    <div class="main-nav" data-sudaclick="blk_mainnav">
+
+
+</body>
+</html>
