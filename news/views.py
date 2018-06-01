@@ -23,12 +23,7 @@ class IndexView(ListView):
 
         context = super(IndexView, self).get_context_data(**kwargs)
 
-        # 父类生成的字典中已有 paginator、page_obj、is_paginated 这三个模板变量，
-        # paginator 是 Paginator 的一个实例，
-        # page_obj 是 Page 的一个实例，
-        # is_paginated 是一个布尔变量，用于指示是否已分页。
-        # 例如如果规定每页 10 个数据，而本身只有 5 个数据，其实就用不着分页，此时 is_paginated=False。
-        # 由于 context 是一个字典，所以调用 get 方法从中取出某个键对应的值。
+
         paginator = context.get('paginator')
         page = context.get('page_obj')
         is_paginated = context.get('is_paginated')
@@ -122,7 +117,7 @@ class PostDetailView(DetailView):
             ])
 
         post.body = md.convert(post.body)
-        post.toc = md.toc
+        post.toc = md.doc_tag
         return post
 
     def get_context_data(self, **kwargs):

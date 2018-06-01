@@ -40,9 +40,6 @@ def get_more_popular_post():
 def get_now_day_hot():
     t = timezone.now()
 
-    # ,
-    # created_time__month = t.month,
-    # created_time__day = t.day
     return Post.objects.filter(created_time__year=t.year,
                                created_time__month=t.month,
                                ).order_by('-views')

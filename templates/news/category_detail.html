@@ -16,14 +16,15 @@
                     {% for post in  post_list %}
                         <article class="post post-{{ post.pk }}">
                         {% if forloop.counter <= 5  %}
-                            <div>
+
                                 <ul class="list3">
-                                <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-                                    {{ post.created_time }}
-                                <li></li>
+                                {{ post.created_time }}
+                                <h2><a href="{{ post.get_absolute_url }}"><p style="font-size: 20px">{{ post.title }}</p></a></h2>
+
+
 
                                 </ul>
-                            </div>
+
                         {% endif %}
                         </article>
                     {% empty %}
@@ -42,7 +43,7 @@
                               <figure><img src="{{ post.img }}" width=400px height=450px></figure>
                               <p>&nbsp;</p>
                                 {{ post.img }}
-                              <p style="font-size:22px;">{{ post.title }}</p>
+                              <h2><p style="font-size:22px;">{{ post.title }}</p></h2>
                                 <p>{{ post.created_time }} &nbsp;&nbsp;{{ post.views }}&nbsp;&nbsp;&nbsp;{{ post.author }}</p>
                                 <p>{{ post.excerpt }}</p>
                             </div>
@@ -84,7 +85,7 @@
                             {% for post in popular_post_list %}
                             {% if forloop.counter <= 3 %}
                                 <li></li>
-                                <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                                <h2><a href="{{ post.get_absolute_url }}"><p style="font-size: 20px">{{ post.title }}</p></a></h2>
                             {% endif %}
                             {% endfor %}
                         </ul>
@@ -94,7 +95,7 @@
                             {% for post in popular_post_list %}
                             {% if forloop.counter > 3 and forloop.counter < 7 %}
                                 <li></li>
-                                <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                                <h2><a href="{{ post.get_absolute_url }}"><p style="font-size: 20px">{{ post.title }}</p></a></h2>
                             {% endif %}
                             {% endfor %}
 
@@ -105,7 +106,7 @@
                            {% for post in popular_post_list %}
                             {% if forloop.counter > 6 and forloop.counter < 10 %}
                                 <li></li>
-                                <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                                <h2><a href="{{ post.get_absolute_url }}"><p style="font-size: 20px">{{ post.title }}</p></a></h2>
                             {% endif %}
                             {% endfor %}
                         </ul>

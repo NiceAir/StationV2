@@ -12,30 +12,30 @@
             {% if query %}
                 {% for result in page.object_list %}
 
-                    <h2><span>
-                    <a href="{{ result.object.get_absolute_url }}"> {% highlight result.object.title with query %}</a>
-                    </span>
+                    <h2>
+                    <a href="{{ result.object.get_absolute_url }}"> <p style="font-size: 25px">{% highlight result.object.title with query %}</p></a>
+
                     </h2>
-                     <span>
+
                          <a href="{% url 'news:category' result.object.category.pk %}">
                                 {{ result.object.category.name }}
                      </a>
-                     </span>
 
-                    <span>
+
+
                         <a href="#">
                         <time class="entry-date" datetime="{{ result.object.created_time }}">
                                     {{ result.object.created_time }}
                         </time>
                     </a>
-                    </span>
+
                     <br>
                     {% highlight result.object.body with query %}
 
                     <a href="{{ result.object.get_absolute_url }}" class="more">继续阅读</a>
 
                     <br>
-                    <br><br><br>
+                    <br><br><br> <br> <br>
 
                 {% empty %}
                     <h2>没有搜索到你想要的结果！</h2>
